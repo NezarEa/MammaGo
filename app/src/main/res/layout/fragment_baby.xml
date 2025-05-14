@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FF6B81"
+    android:padding="24dp"
     tools:context=".Content.Dashbord.Connection.BabyFragment">
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Baby Gender Spinner -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Baby Gender"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/white">
+
+            <Spinner
+                android:id="@+id/spinner_baby_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Medication Spinner -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Medication Being Taken"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/white">
+
+            <Spinner
+                android:id="@+id/spinner_medication"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Health Diagnosis Spinner -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Baby Health Diagnosis"
+            android:textColorHint="@color/white"
+            app:hintTextColor="@color/white">
+
+            <Spinner
+                android:id="@+id/spinner_diagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:paddingEnd="12dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Next Button -->
+        <Button
+            android:id="@+id/Next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#FFB6C1"
+            android:text="Next"
+            android:textAllCaps="false"
+            android:textColor="#D35A6C"
+            android:textStyle="bold"/>
+
+        <!-- Login Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Already have an account? Log in"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"/>
+    </LinearLayout>
+</ScrollView>

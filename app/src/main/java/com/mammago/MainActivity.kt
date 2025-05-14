@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        // Handle edge-to-edge display
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         sharedPref = getSharedPreferences("app_prefs", MODE_PRIVATE)
+
+        // Check user state and show the appropriate fragment
+        checkUserState()
     }
 
     private fun checkUserState() {
@@ -33,12 +38,9 @@ class MainActivity : AppCompatActivity() {
             !sharedPref.getBoolean("onboarding_complete", false) -> {
                 OnBoardingFragment() // Show onboarding if not completed
             }
-//            auth.currentUser == null -> {
-//                ConnectionFragment() // Show connection if user is not authenticated
-//            }
-//            else -> {
-//                HomeFragment() // Show home fragment if user is authenticated
-//            }
+            else -> {
+                SignUpFragment() // Show SignUp if onboarding is complete (no authentication needed)
+            }
         }
         // Show fragment only if it's not already the current one
         if (fragment::class.java != supportFragmentManager.findFragmentById(R.id.nav_host_fragment)?.javaClass) {
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Function to show fragment in the activity
     fun showFragment(fragment: Fragment, addToBackStack: Boolean = false) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.nav_host_fragment, fragment) // Replace current fragment
@@ -60,5 +63,4 @@ class MainActivity : AppCompatActivity() {
         sharedPref.edit { putBoolean("onboarding_complete", true) }
         showFragment(SignUpFragment(), addToBackStack = false)
     }
-
 }
